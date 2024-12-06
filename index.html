@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <!-- Código para monitorar o site -->
+
+      <!-- Código para monitorar o site -->
    <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -21,7 +22,6 @@
   gtag('config', 'G-1L1EG84KQ8');
 </script>
   <!-- Fim do código para monitorar o site -->
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bung Antonio</title>
@@ -30,25 +30,25 @@
             font-family: 'Aptos Display', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: #f5f5f5; /* Fundo suave */
             color: #333;
             text-align: center;
             line-height: 1.6;
         }
 
-        /* Fundo branco com brilho denso */
-        body {
-            background: #f9f9f9;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Brilho sutil */
-        }
-
-        header {
+        /* Estilo do card */
+        .card {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            margin-top: 50px;
-            max-width: 1200px;
-            margin: auto;
+            flex-wrap: wrap;
         }
 
         .profile-image {
@@ -60,10 +60,8 @@
         }
 
         .profile-text {
-            max-width: 600px;
+            max-width: 500px;
             text-align: left;
-            font-size: 18px;
-            color: #333;
         }
 
         h1 {
@@ -76,7 +74,7 @@
             margin: 10px 0;
         }
 
-        /* Estilo do botão de download */
+        /* Botão de download */
         .download-btn {
             position: fixed;
             top: 20px;
@@ -90,9 +88,9 @@
             text-decoration: none;
         }
 
-        /* Link do LinkedIn */
+        /* Link para o LinkedIn */
         .linkedin-link {
-            margin-top: 50px;
+            margin-top: 30px;
             font-size: 1.2rem;
             color: #3498db;
             text-decoration: none;
@@ -100,7 +98,7 @@
 
         /* Responsividade */
         @media (max-width: 768px) {
-            header {
+            .card {
                 flex-direction: column;
                 text-align: center;
             }
@@ -120,7 +118,8 @@
     <!-- Botão de download -->
     <a href="https://link-para-sua-carta.pdf" class="download-btn" download>Baixar Carta de Apresentação</a>
 
-    <header>
+    <!-- Card com a informação -->
+    <div class="card">
         <img src="https://via.placeholder.com/150" alt="Bung Antonio" class="profile-image">
         <div class="profile-text">
             <h1>Bung Antonio</h1>
@@ -128,7 +127,7 @@
             <p>Com experiência em diversas tecnologias, busco sempre a inovação e eficiência em meus projetos, focando sempre em resultados de alto impacto.</p>
             <p>Estou em constante aprendizado e sempre disposto a colaborar em novas ideias e soluções.</p>
         </div>
-    </header>
+    </div>
 
     <!-- Link para o LinkedIn -->
     <a href="https://www.linkedin.com/in/bungantonio" class="linkedin-link" target="_blank">Visite meu LinkedIn</a>
