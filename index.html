@@ -1,86 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <!-- Código para monitorar o site -->
-  <!-- Microsoft Clarity -->
+    <!-- Código para monitorar o site -->
+   <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ol4pc7ynva");
-  </script>
+</script>
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1L1EG84KQ8"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-1L1EG84KQ8');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1L1EG84KQ8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1L1EG84KQ8');
+</script>
   <!-- Fim do código para monitorar o site -->
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bung Antonio - Página Pessoal</title>
+    <title>Bung Antonio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Aptos Display', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #fff;
             color: #333;
             text-align: center;
+            line-height: 1.6;
         }
+
+        /* Fundo branco com brilho denso */
+        body {
+            background: #f9f9f9;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Brilho sutil */
+        }
+
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin: auto;
         }
-        img {
-            max-width: 200px;
+
+        .profile-image {
             border-radius: 50%;
-            margin-top: 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 30px;
         }
-        .content {
-            padding: 20px;
+
+        .profile-text {
+            max-width: 600px;
+            text-align: left;
+            font-size: 18px;
+            color: #333;
         }
-        a {
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        /* Estilo do botão de download */
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        /* Link do LinkedIn */
+        .linkedin-link {
+            margin-top: 50px;
+            font-size: 1.2rem;
             color: #3498db;
             text-decoration: none;
         }
-        .button {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 20px;
-            display: inline-block;
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                margin-bottom: 20px;
+            }
+
+            .download-btn {
+                top: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Botão de download -->
+    <a href="https://link-para-sua-carta.pdf" class="download-btn" download>Baixar Carta de Apresentação</a>
+
     <header>
-        <h1>Bung Antonio</h1>
-        <p>Desenvolvedor de Software | Engenheiro Informático</p>
+        <img src="https://via.placeholder.com/150" alt="Bung Antonio" class="profile-image">
+        <div class="profile-text">
+            <h1>Bung Antonio</h1>
+            <p>Desenvolvedor de Software | Engenheiro Informático</p>
+            <p>Com experiência em diversas tecnologias, busco sempre a inovação e eficiência em meus projetos, focando sempre em resultados de alto impacto.</p>
+            <p>Estou em constante aprendizado e sempre disposto a colaborar em novas ideias e soluções.</p>
+        </div>
     </header>
 
-    <div class="content">
-        <!-- Substitua a URL da sua imagem -->
-        <img src="https://via.placeholder.com/200" alt="Bung Antonio">
-        
-        <p>Olá, sou Bung Antonio, um desenvolvedor de software e engenheiro informático. Tenho experiência em diversas tecnologias e estou sempre em busca de novos desafios.</p>
-
-        <p>Se deseja entrar em contato ou saber mais sobre o meu trabalho, fique à vontade para me enviar um e-mail.</p>
-
-        <!-- Link para contato -->
-        <p><a href="mailto:bungantonio@email.com">Envie-me um e-mail</a></p>
-        
-        <!-- Link para o download da carta de apresentação -->
-        <a href="https://link-para-sua-carta.pdf" class="button" download>Clique para baixar minha carta de apresentação</a>
-    </div>
+    <!-- Link para o LinkedIn -->
+    <a href="https://www.linkedin.com/in/bungantonio" class="linkedin-link" target="_blank">Visite meu LinkedIn</a>
 </body>
 </html>
