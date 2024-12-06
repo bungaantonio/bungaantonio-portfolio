@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+    <!-- Código para monitorar o site -->
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ol4pc7ynva");
+    </script>
 
-      <!-- Código para monitorar o site -->
-   <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ol4pc7ynva");
-</script>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1L1EG84KQ8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1L1EG84KQ8');
-</script>
-  <!-- Fim do código para monitorar o site -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1L1EG84KQ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1L1EG84KQ8');
+    </script>
+    <!-- Fim do código para monitorar o site -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bung Antonio</title>
@@ -39,16 +38,15 @@
         /* Estilo do card */
         .card {
             width: 90%;
-            max-width: 900px;
+            max-width: 600px;
             margin: 50px auto;
             padding: 30px;
             background-color: #fff;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Alinha os itens verticalmente */
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .profile-image {
@@ -56,12 +54,12 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
-            margin-right: 30px;
+            margin-bottom: 20px;
         }
 
         .profile-text {
+            text-align: center;
             max-width: 500px;
-            text-align: left;
         }
 
         h1 {
@@ -90,10 +88,17 @@
 
         /* Link para o LinkedIn */
         .linkedin-link {
+            display: inline-flex;
+            align-items: center;
             margin-top: 30px;
             font-size: 1.2rem;
             color: #3498db;
             text-decoration: none;
+        }
+
+        .linkedin-link i {
+            font-size: 1.5rem;
+            margin-right: 10px;
         }
 
         /* Responsividade */
@@ -101,10 +106,6 @@
             .card {
                 flex-direction: column;
                 text-align: center;
-            }
-
-            .profile-image {
-                margin-bottom: 20px;
             }
 
             .download-btn {
@@ -129,7 +130,12 @@
         </div>
     </div>
 
-    <!-- Link para o LinkedIn -->
-    <a href="https://www.linkedin.com/in/bungantonio" class="linkedin-link" target="_blank">Visite meu LinkedIn</a>
+    <!-- Link para o LinkedIn com ícone -->
+    <a href="https://www.linkedin.com/in/bungantonio" class="linkedin-link" target="_blank">
+        <i class="fab fa-linkedin"></i>Visite meu LinkedIn
+    </a>
+
+    <!-- Adicionando o link para o ícone do LinkedIn -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
