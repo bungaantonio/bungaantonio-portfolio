@@ -2,7 +2,6 @@
 <html lang="pt">
 <head>
     <!-- Código para monitorar o site -->
-    <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -11,7 +10,6 @@
         })(window, document, "clarity", "script", "ol4pc7ynva");
     </script>
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1L1EG84KQ8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -19,8 +17,7 @@
         gtag('js', new Date());
         gtag('config', 'G-1L1EG84KQ8');
     </script>
-    <!-- Fim do código para monitorar o site -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bung Antonio</title>
@@ -29,13 +26,12 @@
             font-family: 'Aptos Display', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5; /* Fundo suave */
+            background-color: #f5f5f5;
             color: #333;
             text-align: center;
             line-height: 1.6;
         }
 
-        /* Estilo do card */
         .card {
             width: 90%;
             max-width: 600px;
@@ -43,9 +39,9 @@
             padding: 30px;
             background-color: #fff;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: column; /* Alinha os itens verticalmente */
+            flex-direction: column;
             align-items: center;
         }
 
@@ -72,21 +68,51 @@
             margin: 10px 0;
         }
 
-        /* Botão de download */
-        .download-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-decoration: none;
+        /* Estilo para a linha do tempo (roadmap) */
+        .timeline {
+            position: relative;
+            margin-top: 30px;
+            padding-left: 20px;
+            text-align: left;
         }
 
-        /* Link para o LinkedIn */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #3498db; /* Linha do roadmap */
+        }
+
+        .timeline-event {
+            margin: 20px 0;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white; /* Cria o círculo */
+        }
+
+        .timeline-event h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        .timeline-event p {
+            font-size: 1.1rem;
+        }
+
         .linkedin-link {
             display: inline-flex;
             align-items: center;
@@ -101,36 +127,54 @@
             margin-right: 10px;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .card {
                 flex-direction: column;
                 text-align: center;
             }
-
-            .download-btn {
-                top: 10px;
-                right: 10px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Botão de download -->
-    <a href="https://link-para-sua-carta.pdf" class="download-btn" download>Baixar Carta de Apresentação</a>
-
     <!-- Card com a informação -->
     <div class="card">
-        <img src="images/bungaantonio.jpg" alt="Bung Antonio" class="profile-image">
+        <img src="https://via.placeholder.com/150" alt="Bung Antonio" class="profile-image">
         <div class="profile-text">
             <h1>Bung Antonio</h1>
             <p>Desenvolvedor de Software | Engenheiro Informático</p>
-            <p>Com experiência em diversas tecnologias, busco sempre a inovação e eficiência em meus projetos, focando sempre em resultados de alto impacto.</p>
-            <p>Estou em constante aprendizado e sempre disposto a colaborar em novas ideias e soluções.</p>
+        </div>
+        
+        <!-- Linha do Tempo (Roadmap) -->
+        <div class="timeline">
+            <!-- Evento 1 -->
+            <div class="timeline-event">
+                <h3>Introdução ao Desenvolvimento</h3>
+                <p>Desde pequeno, sempre fui fascinado por tecnologia. Comecei a aprender programação em minha adolescência e logo percebi que era aquilo que queria fazer.</p>
+            </div>
+            <!-- Evento 2 -->
+            <div class="timeline-event">
+                <h3>Primeiros Passos no Código</h3>
+                <p>No início, fui autodidata, estudando programação básica. Meu primeiro projeto foi criar um simples site com HTML e CSS, o que me deu a confiança para continuar aprendendo.</p>
+            </div>
+            <!-- Evento 3 -->
+            <div class="timeline-event">
+                <h3>Início da Faculdade e Aprendizado Formal</h3>
+                <p>Quando entrei na faculdade, tive a oportunidade de estudar mais profundamente linguagens como Python e JavaScript. Foi quando comecei a trabalhar em projetos reais e a me envolver com desenvolvimento de software profissional.</p>
+            </div>
+            <!-- Evento 4 -->
+            <div class="timeline-event">
+                <h3>Desenvolvimento Profissional</h3>
+                <p>Com o tempo, comecei a trabalhar em projetos de maior escala, incluindo aplicativos web e sistemas de gerenciamento de dados, aplicando conceitos modernos de desenvolvimento como frameworks e metodologias ágeis.</p>
+            </div>
+            <!-- Evento 5 -->
+            <div class="timeline-event">
+                <h3>Reflexões Finais</h3>
+                <p>Hoje, sou um desenvolvedor apaixonado por tecnologia, sempre buscando aprender e aplicar novos conhecimentos. Estou empolgado com as oportunidades futuras no campo do desenvolvimento de software.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Link para o LinkedIn com ícone -->
+    <!-- Link para o LinkedIn -->
     <a href="https://www.linkedin.com/in/bungantonio" class="linkedin-link" target="_blank">
         <i class="fab fa-linkedin"></i>Visite meu LinkedIn
     </a>
