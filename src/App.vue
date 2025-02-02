@@ -1,250 +1,58 @@
 <template>
-  <div class="container">
-    <img src="/bungaantonio-brand.jpeg" alt="Bung Antonio" class="profile-image">
-    <div class="profile-text">
-      <h1>Bunga António</h1>
-      <p>"Start-ups crescem em ambientes de forte colaboração e disrupção"</p>
+  <div class="container mx-auto p-6 max-w-3xl text-center">
+    <img src="/bungaantonio-brand.jpeg" alt="Bunga António" class="w-40 h-40 rounded-full mx-auto border-4 border-blue-500 shadow-lg">
+    
+    <div class="mt-4">
+      <h1 class="text-4xl font-bold text-gray-900">Bunga António</h1>
+      <p class="text-lg text-gray-600 italic mt-2">"Start-ups crescem em ambientes de forte colaboração e disrupção"</p>
     </div>
-
-    <div class="timeline">
-      <div class="timeline-event" v-for="(event, index) in timelineEvents" :key="index">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.description }}</p>
+    
+    <div class="timeline mt-10 space-y-8">
+      <div v-for="(event, index) in sortedTimelineEvents" :key="index" class="relative p-6 bg-white shadow-md rounded-lg transform transition duration-500 hover:scale-105">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">
+          {{ event.year }}
+        </div>
+        <h3 class="text-2xl font-semibold text-blue-600 mt-4">{{ event.title }}</h3>
+        <p class="text-gray-700 mt-2">{{ event.description }}</p>
       </div>
     </div>
-
-    <!-- Novo Botão com Empatia -->
-    <a href="https://www.linkedin.com/in/bungaantonio" class="cta-button" target="_blank">
-      Vamos Conversar <span class="icon">💬</span>
+    
+    <a href="https://www.linkedin.com/in/bungaantonio" class="mt-8 inline-block bg-blue-600 text-white text-lg font-semibold px-6 py-3 rounded-full transition duration-300 hover:bg-blue-500 shadow-lg">
+      Vamos Conversar 💬
     </a>
-
-    <!-- Redes sociais -->
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/bungaantonio" class="social-link" target="_blank">
-        <i class="fab fa-linkedin"></i>LinkedIn
+    
+    <div class="mt-6 flex justify-center space-x-4">
+      <a href="https://www.linkedin.com/in/bungaantonio" class="text-blue-500 hover:text-blue-700">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.25c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.25h-3v-5.5c0-1.32-.03-3-1.75-3s-2.02 1.38-2.02 2.91v5.59h-3v-10h2.88v1.38h.04c.4-.76 1.37-1.56 2.81-1.56 3.01 0 3.54 1.98 3.54 4.56v5.62z"/>
+        </svg>
       </a>
-      <a href="https://github.com/bungantonio" class="social-link" target="_blank">
-        <i class="fab fa-github"></i>GitHub
+      <a href="https://github.com/bungaantonio" class="text-gray-900 hover:text-gray-700">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.26.82-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.805 1.304 3.49.997.108-.776.418-1.304.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.312.468-2.382 1.236-3.22-.123-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.984-.399 3.005-.405 1.02.006 2.047.139 3.005.405 2.29-1.552 3.296-1.23 3.296-1.23.656 1.653.243 2.874.12 3.176.768.838 1.236 1.908 1.236 3.22 0 4.61-2.807 5.625-5.479 5.921.43.372.815 1.102.815 2.222v3.293c0 .32.216.693.825.576 4.765-1.586 8.2-6.083 8.2-11.385 0-6.627-5.373-12-12-12z"/>
+        </svg>
       </a>
-      <a href="https://twitter.com/bungaantonio" class="social-link" target="_blank">
-        <i class="fab fa-twitter"></i>Twitter
+      <a href="https://twitter.com/bungaantonio" class="text-blue-400 hover:text-blue-600">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.954 4.569c-.885.389-1.833.654-2.825.775 1.014-.611 1.794-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.956-2.176-1.555-3.594-1.555-2.719 0-4.924 2.207-4.924 4.923 0 .385.045.759.127 1.122-4.092-.206-7.719-2.166-10.15-5.144-.423.722-.665 1.561-.665 2.457 0 1.695.864 3.194 2.178 4.073-.804-.026-1.56-.246-2.22-.614v.061c0 2.366 1.683 4.342 3.918 4.79-.41.111-.844.171-1.292.171-.315 0-.624-.031-.927-.089.625 1.951 2.445 3.376 4.604 3.415-1.688 1.322-3.81 2.107-6.102 2.107-.396 0-.79-.023-1.175-.067 2.179 1.397 4.765 2.211 7.557 2.211 9.055 0 14.01-7.496 14.01-13.986 0-.209 0-.42-.014-.63.962-.695 1.797-1.562 2.457-2.548l-.047-.02z"/>
+        </svg>
       </a>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      timelineEvents: [
-        {
-          title: 'Introdução ao Desenvolvimento',
-          description: 'Desde pequeno, sempre fui fascinado por tecnologia. Comecei a aprender programação em minha adolescência e logo percebi que era aquilo que queria fazer.'
-        },
-        {
-          title: 'Primeiros Passos no Código',
-          description: 'No início, fui autodidata, estudando programação básica. Meu primeiro projeto foi criar um simples site com HTML e CSS, o que me deu a confiança para continuar aprendendo.'
-        },
-        {
-          title: 'Início da Faculdade e Aprendizado Formal',
-          description: 'Quando entrei na faculdade, tive a oportunidade de estudar mais profundamente linguagens como Python e JavaScript. Foi quando comecei a trabalhar em projetos reais e a me envolver com desenvolvimento de software profissional.'
-        },
-        {
-          title: 'Desenvolvimento Profissional',
-          description: 'Com o tempo, comecei a trabalhar em projetos de maior escala, incluindo aplicativos web e sistemas de gerenciamento de dados, aplicando conceitos modernos de desenvolvimento como frameworks e metodologias ágeis.'
-        },
-        {
-          title: 'Reflexões Finais',
-          description: 'Hoje, sou um desenvolvedor apaixonado por tecnologia, sempre buscando aprender e aplicar novos conhecimentos. Estou empolgado com as oportunidades futuras no campo do desenvolvimento de software.'
-        }
-      ]
-    };
-  },
-  mounted() {
-    const timelineEvents = this.$el.querySelectorAll(".timeline-event");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.5 });
 
-    timelineEvents.forEach(event => {
-      observer.observe(event);
-    });
-  }
-};
+<script setup>
+import { ref, computed } from 'vue';
+
+const timelineEvents = ref([
+  { year: 2025, title: 'Desenvolvimento Profissional', description: 'Trabalhei em projetos de maior escala e apliquei conceitos modernos como frameworks e metodologias ágeis.' },
+  { year: 2018, title: 'Início da Faculdade e Aprendizado Formal', description: 'Aprofundei conhecimentos em Python e JavaScript e comecei a desenvolver projetos reais.' },
+  { year: 2015, title: 'Primeiros Passos no Código', description: 'Autodidata no início, criei meu primeiro site e segui aprendendo.' },
+  { year: 2010, title: 'No princípio...', description: 'Fascinado por tecnologia desde pequeno, comecei minha jornada na programação.' },
+]);
+
+const sortedTimelineEvents = computed(() => {
+  return timelineEvents.value.sort((a, b) => b.year - a.year);
+});
 </script>
-
-<style scoped>
-body {
-  font-family: 'Aptos Display', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
-  color: #333;
-  text-align: center;
-  line-height: 1.6;
-  position: relative;
-}
-
-/* Fundo gráfico subtil (devo escolher um fundo**) */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('/cover.jpg') no-repeat center center/cover;
-  opacity: 0.1;
-  z-index: -1;
-  /* Fica atrás do conteúdo */
-}
-
-.container {
-  width: 90%;
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: rgba(255, 255, 255, 0.85);
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-.profile-image {
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  margin-bottom: 30px;
-  border: 5px solid #3498db;
-}
-
-.profile-text {
-  text-align: center;
-  max-width: 600px;
-}
-
-h1 {
-  font-size: 3rem;
-  color: #2c3e50;
-  font-weight: bold;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-p {
-  font-size: 1.2rem;
-  color: #34495e;
-  line-height: 1.8;
-  margin: 10px 0;
-}
-
-.timeline {
-  margin-top: 50px;
-  text-align: left;
-}
-
-.timeline-event {
-  margin: 20px 0;
-  position: relative;
-  padding-left: 40px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.timeline-event.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.timeline-event::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 20px;
-  height: 20px;
-  background-color: #3498db;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px white;
-}
-
-.timeline-event h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #2980b9;
-}
-
-.timeline-event p {
-  font-size: 1.1rem;
-}
-
-.cta-button {
-  display: inline-block;
-  background-color: #2980b9;
-  color: white;
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  border-radius: 25px;
-  transition: background-color 0.3s ease;
-  margin-top: 50px;
-}
-
-.cta-button:hover {
-  background-color: #1abc9c;
-}
-
-.cta-button .icon {
-  margin-left: 10px;
-}
-
-.social-links {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-link {
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.5rem;
-  color: #3498db;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.social-link:hover {
-  transform: scale(1.1);
-}
-
-.social-link i {
-  margin-right: 10px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .cta-button {
-    padding: 12px 25px;
-  }
-}
-</style>
