@@ -2,93 +2,80 @@
   <div class="container mx-auto px-4">
     <h1 class="text-3xl font-bold mb-6">Blog</h1>
 
-    <div v-if="postsLoaded">
+    <!-- Se houver erro ao carregar os posts -->
+    <div v-if="hasError" class="text-center p-4">
+      <p>Ocorreu um erro ao carregar os posts. Por favor, tente novamente mais tarde.</p>
+    </div>
+
+    <!-- Se os posts ainda não foram carregados -->
+    <div v-else-if="!postsLoaded" class="text-center p-4 flex justify-center items-center">
+      <p>A carregar os posts...</p>
+      <div class="loader"></div>
+    </div>
+
+    <!-- Se houver posts carregados -->
+    <div v-else>
+      <!-- Se houver posts para mostrar -->
       <div v-if="displayedPosts.length > 0" class="space-y-4 md:space-y-6">
         <div
           v-for="post in displayedPosts"
           :key="post.id"
           class="bg-white p-4 md:p-6 rounded-lg shadow hover:shadow-md transition duration-300"
         >
-          <div
-            class="flex flex-col md:flex-row items-start md:items-center justify-between mb-2"
-          >
-            <router-link
-              :to="`/blog/${post.id}`"
-              class="text-blue-600 hover:underline text-lg md:text-xl font-medium mb-1 md:mb-0"
-            >
-              {{ post.title }}
-            </router-link>
-            <span class="text-gray-500 text-sm"
-              >Publicado em: {{ formatDate(post.date) }}</span
-            >
-          </div>
-          <p class="text-gray-700">
-            {{ post.excerpt }}
-            <router-link
-              :to="`/blog/${post.id}`"
-              class="text-blue-600 hover:underline font-semibold"
-            >
-              Ler mais
-            </router-link>
-          </p>
+          <article>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-2">
+              <router-link
+                :to="`/blog/${post.id}`"
+                class="text-blue-600 hover:underline text-lg md:text-xl font-medium mb-1 md:mb-0"
+              >
+                {{ post.title }}
+              </router-link>
+              <span class="text-gray-500 text-sm">Publicado em: {{ post.formattedDate }}</span>
+            </div>
+            <p class="text-gray-700">
+              {{ post.excerpt }}
+              <router-link
+                :to="`/blog/${post.id}`"
+                class="text-blue-600 hover:underline font-semibold"
+              >
+                Ler mais
+              </router-link>
+            </p>
+          </article>
         </div>
       </div>
+
+      <!-- Se não houver posts -->
       <div v-else>
         <p>Ainda não há posts para mostrar.</p>
       </div>
 
       <!-- Paginação -->
-      <div v-if="totalPages > 1" class="mt-8 flex justify-center space-x-2">
-        <button
-          v-if="currentPage > 1"
-          @click="changePage(currentPage - 1)"
-          class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-300 flex items-center justify-center"
-          aria-label="Página anterior"
-        >
-          Anterior
-        </button>
-        <button
-          v-for="page in totalPages"
-          :key="page"
-          @click="changePage(page)"
-          :class="{
-            'bg-blue-500 text-white hover:bg-blue-600': page === currentPage,
-            'pointer-events-none': page === currentPage,
-          }"
-          class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-300 flex items-center justify-center"
-          :aria-current="page === currentPage ? 'page' : null"
-          :aria-label="`Ir para a página ${page}`"
-        >
-          {{ page }}
-        </button>
-        <button
-          v-if="currentPage < totalPages"
-          @click="changePage(currentPage + 1)"
-          class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-300 flex items-center justify-center"
-          aria-label="Próxima página"
-        >
-          Próximo
-        </button>
-      </div>
-    </div>
-    <div v-else class="text-center p-4 flex justify-center items-center">
-        <p v-if="!hasError">A carregar os Posts...</p>
-        <div v-if="!hasError" class="loader"></div>
-        <p v-else>Ocorreu um erro ao carregar os posts. Por favor, tente novamente mais tarde.</p>
+      <Pagination
+        v-if="totalPages > 1"
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @changePage="changePage"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import PostService from '../services/PostService';
+import Pagination from './Pagination.vue'; // Importar o componente de paginação
+
 export default {
+  components: {
+    Pagination,
+  },
   data() {
     return {
       posts: [],
       postsLoaded: false,
       currentPage: 1,
       postsPerPage: 5,
-       hasError: false, // Add the error
+      hasError: false,
     };
   },
   computed: {
@@ -105,12 +92,13 @@ export default {
     await this.loadPosts();
   },
   methods: {
-    formatDate(dateString) {
-      return PostService.formatDate(dateString);
-    },
     async loadPosts() {
       try {
-        this.posts = await PostService.loadPosts();
+        const rawPosts = await PostService.loadPosts();
+        this.posts = rawPosts.map(post => ({
+          ...post,
+          formattedDate: this.formatDate(post.date),
+        }));
         this.postsLoaded = true;
         this.hasError = false;
       } catch (error) {
@@ -118,13 +106,17 @@ export default {
         this.hasError = true;
       }
     },
+    formatDate(dateString) {
+      return PostService.formatDate(dateString);
+    },
     changePage(page) {
       this.currentPage = page;
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll para o topo ao mudar de página
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
   },
 };
 </script>
+
 <style scoped>
 .loader {
   border: 4px solid #f3f3f3;
@@ -143,5 +135,10 @@ export default {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Melhorias de acessibilidade */
+.btn {
+  @apply px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition duration-300 flex items-center justify-center;
 }
 </style>
