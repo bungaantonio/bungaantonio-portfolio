@@ -9,9 +9,9 @@ Quando você trabalha com múltiplas contas no GitHub (ou GitLab), como uma cont
 
 ## Pré-requisitos
 
-    + Git instalado (`git --version`)
-    + Acesso ao terminal (Linux, macOS, ou Git Bash no Windows)
-    + Contas configuradas no GitHub ou GitLab
+    Git instalado (`git --version`)
+    Acesso ao terminal (Linux, macOS, ou Git Bash no Windows)
+    Contas configuradas no GitHub ou GitLab
 
 ## Passo 1: Gerar Chaves SSH distintas
 
